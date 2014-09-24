@@ -4,8 +4,7 @@ var mongoose = require('mongoose')
 // Connect to mongodb
 var connect = function () {
   var options = { server: { socketOptions: { keepAlive: 1 } } }
-  mongoose.connect('mongodb://heroku:Idi1P9BmWC7H1o2QvMkBAdYeQ5sFM7cpuwBL55PQmm91ngH4axovJFnz-jMcFiApkKMkejoycFXKQ7CuXRvFZQ@kahana.mongohq.com:10007/app29942847
-', options)
+  mongoose.connect(ENV['MONGOHQ_URL'], options)
 }
 connect();
 // Error handler
