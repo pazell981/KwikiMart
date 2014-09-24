@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		<title>Kwiki Mart</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular-route.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.8.0/angular-moment.min.js"></script>
+
+		<script src="/javascripts/app.js"></script>
+		<script src="/javascripts/services/customerFactory.js"></script>
+		<script src="/javascripts/services/productFactory.js"></script>
+		<script src="/javascripts/services/orderFactory.js"></script>
+		<script src="/javascripts/controllers/orders.js"></script>
+		<script src="/javascripts/controllers/customers.js"></script>
+		<script src="/javascripts/controllers/products.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+    
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+ 
+    <script src="/javascripts/routes.js"></script>
+  </head>
+  <body>
+		<div ng-app='myApp' id='wrapper'>
+			<div id='container'>
+				<div id = 'title'>
+					<ul id = 'navigation'>
+						<li><a href="#/dashboard">Dashboard</a></li>
+						<li><a href="#/products">Products</a></li>
+						<li><a href="#/orders">Orders</a></li>
+						<li><a href="#/customers">Customers</a></li>
+						<li><a href="#">Settings</a></li>
+					</ul>
+					<h1>Kwiki Mart</h1>
+				</div>
+				<div ng-view=''>
+				</div>
+			</div>
+		</div>
+  </body>
+</html>

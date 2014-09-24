@@ -1,0 +1,29 @@
+<div>
+	<h1>Dashboard</h1>
+	<div id='sidebar'>
+		<input type="text" placeholder="filter by..." ng-model='filter_name'>
+	</div>
+	<div id='main'>
+		<div ng-controller='Products'>
+			<h3>Products Recently Added</h3>
+			<p>Filtered by: {{ filter_name }}</p>
+			<div class="product" ng-repeat="product in dashProducts | filter: filter_name | orderBy:predicate1">
+				<img ng-src={{product.image_file}} alt={{product.description}}>
+				<p>{{product.name}}</p>
+				<p>({{product.quantity}} left)</p>
+			</div>
+		</div>
+		<div ng-controller='Orders'>
+			<h3>Recent Orders</h3>
+			<ul>
+				<li ng-repeat="order in dashOrders">{{order.customer}} purchased {{order.quanity}} {{order.product}} (<span am-time-ago="order.created"></span>)</li>
+			</ul>
+		</div>
+		<div  ng-controller='Customers'>
+			<h3>New Customers</h3>
+			<ul>
+				<li ng-repeat="customer in dashCustomers | orderBy:predicate">{{customer.name}} joined the store. (<span am-time-ago="customer.created"></span>)</li>
+			</ul>
+		</div>
+	</div>
+</div>

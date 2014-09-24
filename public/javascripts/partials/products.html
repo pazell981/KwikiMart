@@ -1,0 +1,49 @@
+<div ng-controller='Products'>
+	<h1>Products</h1>
+	<div id='sidebar'>
+		<form id="addProduct">
+			<input type="text" placeholder="filter by..." ng-model='filter_name'>
+			<h4>Add a New Product</h4>
+			<label>Name: </label>
+			<input type="text" ng-model='new_product.name' placeholder='Name'>
+			<label>Image: </label>
+			<!-- span needed to reset file upload -->
+			<span id='file'>
+				<!-- to use the directive file-model is used -->
+				<input type="file" file-model="imgFile">
+			</span>
+			<label>Description: </label>
+			<textarea ng-model='new_product.desc' placeholder='Description'></textarea>
+			<label>Intial Quantity: </label>
+			<input type="text" ng-model='new_product.quantity' placeholder='Quantity'>
+			<button id="add" type="submit" class="btn btn-primary" ng-click='addProduct()'>Add</button>
+		</form>
+	</div>
+	<div id='main'>
+		<div id='header'>
+			<h3>Product List</h3>
+			<p>Filtered by: {{ filter_name }}
+				<span class="pull-right">
+					<button class="btn btn-default btn-xs" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">Previous</button>
+		    	{{currentPage+1}}/{{Math.ceil(products.length/pageSize)}}
+		    	<button class="btn btn-default btn-xs" ng-disabled="currentPage >= products.length/pageSize - 1" ng-click="currentPage=currentPage+1">Next</button>
+		    </span>
+	  	</p>
+	  </div>
+		<div class="row" data-ng-repeat="rows in products | startFrom:currentPage*pageSize | limitTo:pageSize | partition: 4">
+			<div class="product" ng-repeat="product in rows | filter: filter_name | orderBy:predicate">
+				<img ng-src={{product.image_file}} alt={{product.description}}>
+				<p>{{product.name}}</p>
+				<p>({{product.quantity}} left)</p>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- since javascript will not reset or manipulate a file input field due to client security a workaround is used to clear reset the file input field. after a upload is completed the entire input field is cloned and replaced using jquery inner html -->
+<script type="text/javascript">
+  $(document).ready(function(){
+  	$('#add').click(function(){
+  		$('#file').html($('#file').html());
+  	});
+  });
+</script>
