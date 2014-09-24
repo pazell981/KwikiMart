@@ -4,7 +4,7 @@ var mongoose = require('mongoose')
 // Connect to mongodb
 var connect = function () {
   var options = { server: { socketOptions: { keepAlive: 1 } } }
-  mongoose.connect('mongodb://localhost/ministore', options)
+  mongoose.connect('mongodb://ministore:a4a977266560158f99757a62021e44c5@kahana.mongohq.com:10007/app29942847', options)
 }
 connect();
 // Error handler
