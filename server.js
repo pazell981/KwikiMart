@@ -21,7 +21,7 @@ app.configure(function(){
 var mongoose = require('./config/mongoose.js');
 var routes = require('./config/routes.js')(app);
 
-var port = 3000;
+var port = process.env.PORT || 3000;
 var server = app.listen(port, function() {
   console.log('Express server listening on port ' + port);
 });
